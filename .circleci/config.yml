@@ -2,10 +2,7 @@ version: 2.1
 jobs:
   build:
     machine:
-      python:
-        version: 3.7.7
-      services:
-        - docker
+      image: ubuntu-1604:202004-01
     steps:
       - checkout
       - run:
