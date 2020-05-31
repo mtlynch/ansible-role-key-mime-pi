@@ -1,7 +1,11 @@
 version: 2.1
 jobs:
   build:
-    machine: true
+    machine:
+      python:
+        version: 3.7.7
+      services:
+        - docker
     steps:
       - checkout
       - run:
