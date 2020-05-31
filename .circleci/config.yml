@@ -6,15 +6,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Python 3.7
-          command: apt install python3.7
-      - run:
           name: Test role with molecule
           command: |
-            python3.7 -m venv venv && \
+            python3 -m venv venv && \
             . venv/bin/activate && \
-            pip install "molecule[lint]" && \
-            pip install 'molecule[docker]' && \
+            pip install --upgrade pip && \
+            pip install "molecule[lint]" "molecule[docker]" && \
+            cd project && \
             molecule test
 workflows:
   version: 2
