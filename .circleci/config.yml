@@ -6,6 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install Python3.7
+          command: apt install python3.7
+
           name: Test role with molecule
           command: |
             python3.7 -m venv venv && \
