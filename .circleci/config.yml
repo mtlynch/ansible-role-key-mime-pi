@@ -6,9 +6,16 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Create symlink with role name
+          command: ln -s "${HOME}/project" "${HOME}/ansible-role-key-lime-pi"
+      - run:
+          name: Create Python3 virtual environment
+          working_directory: "${HOME}/ansible-role-key-lime-pi"
+          command: python3 -m venv venv
+      - run:
           name: Test role with molecule
+          working_directory: "${HOME}/ansible-role-key-lime-pi"
           command: |
-            python3 -m venv venv && \
             . venv/bin/activate && \
             pip install --upgrade pip && \
             pip install docker "molecule[lint]" "molecule[docker]" && \
