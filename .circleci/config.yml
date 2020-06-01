@@ -6,15 +6,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Create symlink with role name
-          command: ln -s "${HOME}/project" "${HOME}/ansible-role-key-lime-pi"
+          name: Create symlink to role
+          command: ln -s "${HOME}/project" /usr/share/ansible/roles/ansible-role-key-lime-pi
       - run:
           name: Create Python3 virtual environment
-          working_directory: "~/ansible-role-key-lime-pi"
           command: python3 -m venv venv
       - run:
           name: Test role with molecule
-          working_directory: "~/ansible-role-key-lime-pi"
           command: |
             . venv/bin/activate && \
             pip install --upgrade pip && \
