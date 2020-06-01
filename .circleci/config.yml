@@ -7,7 +7,9 @@ jobs:
       - checkout
       - run:
           name: Create symlink to role
-          command: ln -s "${HOME}/project" /usr/share/ansible/roles/ansible-role-key-lime-pi
+          command: |
+            mkdir -p /usr/share/ansible/roles && \
+            ln -s "${HOME}/project" /usr/share/ansible/roles/ansible-role-key-lime-pi
       - run:
           name: Create Python3 virtual environment
           command: python3 -m venv venv
