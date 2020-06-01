@@ -10,15 +10,15 @@ jobs:
           command: ln -s "${HOME}/project" "${HOME}/ansible-role-key-lime-pi"
       - run:
           name: Create Python3 virtual environment
-          working_directory: "${HOME}/ansible-role-key-lime-pi"
+          working_directory: "~/ansible-role-key-lime-pi"
           command: python3 -m venv venv
       - run:
           name: Test role with molecule
-          working_directory: "${HOME}/ansible-role-key-lime-pi"
+          working_directory: "~/ansible-role-key-lime-pi"
           command: |
             . venv/bin/activate && \
             pip install --upgrade pip && \
-            pip install docker "molecule[lint]" "molecule[docker]" && \
+            pip install docker molecule[lint] molecule[docker] && \
             molecule test
 workflows:
   version: 2
